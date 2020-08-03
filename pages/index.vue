@@ -98,16 +98,16 @@ export default {
 
     myaxios
       .all([
-        //api.get('http://fogadvance1.kikuzo.jp:8080/box'),
-        //api.get('http://fogadvance1.kikuzo.jp:8080/storage'),
-        //api.get('http://fogadvance1.kikuzo.jp:8080/jetbot'),
-        //api.get('http://fogadvance1.kikuzo.jp:8080/route')
+        api.get('http://fogadvance1.kikuzo.jp:80/box'),
+        api.get('http://fogadvance1.kikuzo.jp:80/storage'),
+        api.get('http://fogadvance1.kikuzo.jp:80/jetbot'),
+        api.get('http://fogadvance1.kikuzo.jp:80/route'),
 
-        api.get('/api/box'),
-        api.get('/api/storage'),
-        api.get('/api/entrance'),
-        api.get('/api/jetbot'),
-        api.get('/api/route'),
+        //api.get('/api/box'),
+        //api.get('/api/storage'),
+        //api.get('/api/entrance'),
+        //api.get('/api/jetbot'),
+        //api.get('/api/route'),
         //api.get('http://localhost:80/box'),
         //api.get('http://localhost:80/storage'),
         //api.get('http://localhost:80/entrance'),
