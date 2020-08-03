@@ -103,11 +103,16 @@ export default {
         //api.get('http://fogadvance1.kikuzo.jp:8080/jetbot'),
         //api.get('http://fogadvance1.kikuzo.jp:8080/route')
 
-        api.get('http://localhost:80/box'),
-        api.get('http://localhost:80/storage'),
-        api.get('http://localhost:80/entrance'),
-        api.get('http://localhost:80/jetbot'),
-        api.get('http://localhost:80/route'),
+        api.get('/api/box'),
+        api.get('/api/storage'),
+        api.get('/api/entrance'),
+        api.get('/api/jetbot'),
+        api.get('/api/route'),
+        //api.get('http://localhost:80/box'),
+        //api.get('http://localhost:80/storage'),
+        //api.get('http://localhost:80/entrance'),
+        //api.get('http://localhost:80/jetbot'),
+        //api.get('http://localhost:80/route'),
       ])
       .then(
         axios.spread((boxes, storages, entrances, jetbot, route) => {

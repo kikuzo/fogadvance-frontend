@@ -155,9 +155,9 @@ export default {
     },
   },
   mounted() {
-    axios.defaults.baseURL = 'http://localhost:80'
+    // axios.defaults.baseURL = 'http://localhost:80'
     //axios.defaults.baseURL = 'http://fogadvance1.kikuzo.jp:8080'
-    axios.get('/jetbot').then((response) => (this.posts = response.data))
+    axios.get('/api/jetbot').then((response) => (this.posts = response.data))
     //console.log(this.posts);
   },
 }
