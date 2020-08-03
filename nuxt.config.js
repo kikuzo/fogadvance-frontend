@@ -73,7 +73,7 @@ export default {
   proxy: {
     "/api": {
       //target: 'http://localhost:80',
-      tareget: 'http://fogadvance1.kikuzo.jp:80',
+      target: 'http://fogadvance1.kikuzo.jp:80',
       pathRewrite: {
         '^/api': '/'
       }
