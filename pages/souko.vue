@@ -179,8 +179,9 @@ export default {
   },
   mounted() {
     // axios.defaults.baseURL = 'http://localhost:8080'
-    // axios.defaults.baseURL = 'http://fogadvance1.kikuzo.jp:8080'
-    axios.get('/api/storage').then((response) => (this.posts = response.data))
+    axios.defaults.baseURL = 'http://fogadvance1.kikuzo.jp:80'
+    axios.get('/storage').then((response) => (this.posts = response.data))
+    // axios.get('/api/storage').then((response) => (this.posts = response.data))
     // console.log(this.posts);
   },
 }
