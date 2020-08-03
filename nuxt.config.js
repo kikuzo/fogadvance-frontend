@@ -10,6 +10,7 @@ export default {
    ** See https://nuxtjs.org/api/configuration-mode
    */
   //mode: 'spa',
+  mode: 'universal',
   /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
