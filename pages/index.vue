@@ -96,7 +96,27 @@
               />
             </svg>
           </v-col>
-          <v-col cols="12" sm="5">
+          <v-col vols="12" sm="5">
+            <v-simple-table dense fixed-header height="500px">
+              <template v-slot:default>
+                <thead>
+                  <tr>
+                    <th class="text-xs-left">ID</th>
+                    <th class="text-xs-left">X</th>
+                    <th class="text-xs-left">Y</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="item in displayData" :key="item.id">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.x }}</td>
+                    <td>{{ item.y }}</td>
+                  </tr>
+                </tbody>
+              </template>
+            </v-simple-table>
+          </v-col>
+          <!-- v-col cols="12" sm="5">
             <v-data-table
               dense
               disable-filtering
@@ -108,7 +128,7 @@
               :headers="tableHeaders"
               :items="displayData"
             ></v-data-table>
-          </v-col>
+          </!-->
         </v-row>
         <v-row>
           <v-col cols="12">
@@ -129,18 +149,20 @@ export default {
   data() {
     return {
       posts: [],
-      displayData: [],
       boxes: [],
       storages: [],
       entrances: [],
       jetbots: [],
       routes: [],
       resolvedRoutes: [],
+      displayData: [],
+      /*
       tableHeaders: [
         { text: 'ID', value: 'id' },
         { text: 'X', value: 'x' },
         { text: 'Y', value: 'y' },
       ],
+      */
       myscale: '0.10',
     }
   },
@@ -246,29 +268,6 @@ export default {
           //console.log(this.displayData)
         })
       )
-    /*
-        axios.get('http://localhost:1030/box')
-        .then(response => this.boxes = response.data);
- 
-        axios.get('http://localhost:1030/storage')
-        .then(response => this.storages = response.data);
-
-        axios.get('http://localhost:1030/entrance')
-        .then(response => this.entrances = response.data)
-
-        console.log(this.boxes);
-
-        for(let i=0; i< this.boxes.length; i++){
-            this.posts.push(this.boxes.data[i]);
-        }
-        for(let i=0; i< this.storages.length; i++){
-            this.posts.push(this.storages.data[i]);
-        }
-        for(let i=0; i< this.entrances.length; i++){
-            this.posts.push(this.entrances.data[i]);
-        }
-        console.log(this.posts);
-        */
   },
 }
 </script>
