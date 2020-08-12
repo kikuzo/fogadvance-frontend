@@ -172,7 +172,7 @@ export default {
     axios.defaults.baseURL = 'http://fogadvance1.kikuzo.jp:80'
     axios.get('/box').then((response) => (this.posts = response.data))
     // axios.get('/api/box').then((response) => (this.posts = response.data))
-    console.log(this.posts)
+    // console.log(this.posts)
   },
 }
 </script>
