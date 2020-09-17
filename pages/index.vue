@@ -15,7 +15,7 @@
               viewbox="0 0 500 600"
               width="600"
               height="500"
-              style="background: #555;"
+              style="background: #555"
             >
               <rect
                 v-for="item in boxes"
@@ -169,7 +169,7 @@ export default {
   methods: {
     calc: function () {
       axios
-        .get('http://fogadvance1.kikuzo.jp:80/healthcheck')
+        .get('http://fogadvance1.kikuzo.jp:80/calc')
         .then((response) => this.posts.push(response))
       //.then(response => console.log(response))
     },
