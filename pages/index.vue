@@ -5,6 +5,7 @@
         <v-toolbar>
           <v-toolbar-title>測定・計算結果</v-toolbar-title>
           <v-spacer></v-spacer>
+          Energy : boxes[0].x
           <v-btn color="info" v-on:click="calc">更新</v-btn>
         </v-toolbar>
       </template>

@@ -62,6 +62,15 @@
                     ></v-text-field>
                   </v-col>
                 </v-row>
+                Energy
+                <v-row>
+                  <v-col cols="12">
+                    <v-text-field
+                      v-model="item.energy.value"
+                      required
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
                 <v-row>
                   <v-col cols="5">
                     <v-spacer></v-spacer>
