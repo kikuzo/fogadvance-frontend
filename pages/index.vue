@@ -94,6 +94,15 @@
                 stroke="white"
                 stroke-width="10"
               />
+              <text
+                v-if="routes.length"
+                x="390"
+                y="490"
+                font-size="s"
+                fill="white"
+              >
+                Energy : {{ routes[0].energy.value }}
+              </text>
             </svg>
           </v-col>
           <v-col vols="12" sm="5">
