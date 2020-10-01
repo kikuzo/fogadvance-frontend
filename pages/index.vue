@@ -5,7 +5,6 @@
         <v-toolbar>
           <v-toolbar-title>測定・計算結果</v-toolbar-title>
           <v-spacer></v-spacer>
-          Energy : boxes[0].x
           <v-btn color="info" v-on:click="calc">更新</v-btn>
         </v-toolbar>
       </template>
@@ -169,13 +168,110 @@ export default {
   },
   methods: {
     calc: function () {
-      axios
-        .get('http://fogadvance1.kikuzo.jp:80/calc')
-        .then((response) => this.posts.push(response))
-      //.then(response => console.log(response))
+      axios.get('http://fogadvance1.kikuzo.jp:80/calc').then((response) => {
+        this.refresh_map()
+      })
+    },
+
+    refresh_map: function () {
+      this.posts.splice(0)
+      this.boxes.splice(0)
+      this.storages.splice(0)
+      this.entrances.splice(0)
+      this.jetbots.splice(0)
+      this.routes.splice(0)
+      this.resolvedRoutes.splice(0)
+      this.displayData.splice(0)
+
+      const myaxios = axios
+      const api = myaxios.create()
+
+      myaxios
+        .all([
+          api.get('http://fogadvance1.kikuzo.jp:80/box'),
+          api.get('http://fogadvance1.kikuzo.jp:80/storage'),
+          api.get('http://fogadvance1.kikuzo.jp:80/entrance'),
+          api.get('http://fogadvance1.kikuzo.jp:80/jetbot'),
+          api.get('http://fogadvance1.kikuzo.jp:80/route'),
+        ])
+        .then(
+          axios.spread((boxes, storages, entrances, jetbots, routes) => {
+            for (let i = 0; i < boxes.data.length; i++) {
+              this.posts.push(boxes.data[i])
+              this.boxes.push(boxes.data[i])
+              let tmpvar = {
+                id: boxes.data[i].id,
+                x: boxes.data[i].x.value,
+                y: boxes.data[i].y.value,
+                z: boxes.data[i].z.value,
+              }
+              this.displayData.push(tmpvar)
+            }
+            for (let i = 0; i < storages.data.length; i++) {
+              this.posts.push(storages.data[i])
+              this.storages.push(storages.data[i])
+              let tmpvar = {
+                id: storages.data[i].id,
+                x: storages.data[i].sx.value,
+                y: storages.data[i].sy.value,
+                z: storages.data[i].sz.value,
+              }
+              this.displayData.push(tmpvar)
+              //console.log(tmpvar)
+            }
+            for (let i = 0; i < entrances.data.length; i++) {
+              this.posts.push(entrances.data[i])
+              this.entrances.push(entrances.data[i])
+              let tmpvar = {
+                id: entrances.data[i].id,
+                x: entrances.data[i].ex.value,
+                y: entrances.data[i].ey.value,
+                z: entrances.data[i].ez.value,
+              }
+              this.displayData.push(tmpvar)
+            }
+            for (let i = 0; i < jetbots.data.length; i++) {
+              this.posts.push(jetbots.data[i])
+              this.jetbots.push(jetbots.data[i])
+              let tmpvar = {
+                id: jetbots.data[i].id,
+                x: jetbots.data[i].jx.value,
+                y: jetbots.data[i].jy.value,
+                z: jetbots.data[i].jz.value,
+              }
+              this.displayData.push(tmpvar)
+            }
+            const self = this
+            for (let i = 0; i < routes.data.length; i++) {
+              this.posts.push(routes.data[i])
+              this.routes.push(routes.data[i])
+              let resolved = Object.assign(
+                self.jetbots.find(
+                  (jb) => jb.id === routes.data[i].JetBotId.value
+                ),
+                self.boxes.find(
+                  (bo) =>
+                    bo.id === routes.data[i].RecognizedObjectObservedId.value
+                ),
+                self.entrances.find(
+                  (et) => et.id === routes.data[i].EntranceId.value
+                ),
+                self.storages.find(
+                  (st) => st.id === routes.data[i].StorageSpaceId.value
+                )
+              )
+              this.resolvedRoutes.push(resolved)
+            }
+            //console.log(this.resolvedRoutes)
+            //console.log(this.displayData)
+          })
+        )
     },
   },
   mounted() {
+    this.refresh_map()
+
+    /*
     const myaxios = axios
     const api = myaxios.create()
 
@@ -248,6 +344,7 @@ export default {
           const self = this
           for (let i = 0; i < routes.data.length; i++) {
             this.posts.push(routes.data[i])
+            this.routes.push(routes.data[i])
             let resolved = Object.assign(
               self.jetbots.find(
                 (jb) => jb.id === routes.data[i].JetBotId.value
@@ -269,6 +366,7 @@ export default {
           //console.log(this.displayData)
         })
       )
+      */
   },
 }
 </script>
