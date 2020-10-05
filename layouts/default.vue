@@ -80,6 +80,11 @@ export default {
           title: 'Route',
           to: '/keiro',
         },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'HyperParameters',
+          to: '/annealing',
+        },
       ],
       miniVariant: false,
       right: true,
