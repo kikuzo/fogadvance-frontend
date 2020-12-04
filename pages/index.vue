@@ -94,15 +94,6 @@
                 stroke="white"
                 stroke-width="10"
               />
-              <text
-                v-if="routes.length"
-                x="390"
-                y="490"
-                font-size="s"
-                fill="white"
-              >
-                Energy : {{ routes[0].energy.value }}
-              </text>
             </svg>
           </v-col>
           <v-col vols="12" sm="5">
@@ -139,6 +130,14 @@
             ></v-data-table>
           </!-->
         </v-row>
+        <v-toolbar v-if="routes.length">
+          Energy : {{ routes[0].energy.value }}　Broken : (box=
+          {{ routes[0].brokenBox.value }}, entrance={{
+            routes[0].brokenEntrance.value
+          }}, storage={{ routes[0].brokenStorage.value }}, jetbot={{
+            routes[0].brokenJetbot.value
+          }})
+        </v-toolbar>
         <v-row>
           <v-col cols="12">
             <v-card>
