@@ -80,6 +80,15 @@
                     ></v-text-field>
                   </v-col>
                 </v-row>
+                パラメータ5
+                <v-row>
+                  <v-col cols="12">
+                    <v-text-field
+                      v-model="item.parameter5.value"
+                      required
+                    ></v-text-field>
+                  </v-col>
+                </v-row>
                 <v-row>
                   <v-col cols="5">
                     <v-spacer></v-spacer>
